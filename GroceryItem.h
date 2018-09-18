@@ -13,7 +13,7 @@ private:
 public:
     GroceryItem();
     GroceryItem(const string&, const int&, const float&, const bool&);
-
+    
     string getName() const;
     void setName(const string&);
     int getQuantity() const;
@@ -24,41 +24,41 @@ public:
     bool isTaxable() const;
     void setTaxable(const bool&);
 };
-
-Groceryitem::GroceryItem()
+//Default constructor
+GroceryItem::GroceryItem()
 {
 
 }
-
-Groceryitem::GroceryItem(const string& name, const int& quantity, const float& unitPrice, const bool& taxable){
+//Grocery Store constructor that recieves name, quantity, product price, and taxable from the user
+GroceryItem::GroceryItem(const string& name, const int& quantity, const float& unitPrice, const bool& taxable){
   _name = name;
   _quantity = quantity;
   _unitPrice = unitPrice;
   _taxable = taxable;
 }
 
-string Groceryitem::getName() const{
+string GroceryItem::getName() const{
   return _name;
 }
-void Groceryitem::setName(const string& name){
+void GroceryItem::setName(const string& name){
   _name = name;
 }
-int Groceryitem::getQuantity() const{
+int GroceryItem::getQuantity() const{
   return _quantity;
 }
 
-void Groceryitem::setQuantity(const int& quantity){
+void GroceryItem::setQuantity(const int& quantity){
   _quantity = quantity;
 }
-float Groceryitem::getUnitPrice() const{
+float GroceryItem::getUnitPrice() const{
   return _unitPrice;
 }
-void Groceryitem::setUnitPrice(const float& unitPrice){
+void GroceryItem::setUnitPrice(const float& unitPrice){
   _unitPrice = unitPrice;
 }
-bool Groceryitem::isTaxable() const{
-
+bool GroceryItem::isTaxable() const{
+return _taxable;
 }
-void Groceryitem::setTaxable(const bool& taxable){
+void GroceryItem::setTaxable(const bool& taxable){
   _taxable = taxable;
 }

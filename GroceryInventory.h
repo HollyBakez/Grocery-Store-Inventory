@@ -45,3 +45,43 @@ void GroceryInventory::createListFromFile(const string& filename) {
         throw invalid_argument("Could not open file " + filename);
     }
 }
+//Default Constructor GroceryInventory
+GroceryInventory::GroceryInventory() {
+
+}
+
+GroceryItem& getEntry(const string&){
+  
+}
+
+void GroceryInventory::addEntry(const string& name, const int& quantity, const float& unitPrice, const bool& taxable){
+  //Since entry is a GroceryItem object it accepts the same parameters
+  GroceryItem entry(name, quantity, unitPrice, taxable);
+ /*
+  entry.setName(name);
+  entry.setQuantity(quantity);
+  entry.setUnitPrice(unitPrice);
+  entry.setTaxable(taxable);
+  */
+  //Adds the entry to the inventory vector
+_inventory.push_back(entry);
+}
+float GroceryInventory::getTaxRate() const{
+
+}
+void GroceryInventory::setTaxRate(const float& taxRate){
+  _taxRate = taxRate;
+
+}
+
+float GroceryInventory::calculateUnitRevenue() const {
+
+}
+
+float GroceryInventory::calculateTaxRevenue() const {
+
+}
+
+float GroceryInventory::calculateTotalRevenue() const {
+
+}
