@@ -6,13 +6,14 @@
 #include <stdexcept>
 #include "GroceryItem.h"
 using namespace std;
-
+//GroceryInventory class and GrocerItem _inventory vector created
 class GroceryInventory {
 private:
 vector<GroceryItem> _inventory;
 float _taxRate;
 
 public:
+//function prototypes created
 GroceryInventory();
 
 GroceryItem& getEntry(const string&);
@@ -51,7 +52,7 @@ void GroceryInventory::createListFromFile(const string& filename) {
 GroceryInventory::GroceryInventory() {
 
 }
-
+//recieves an item name and checks if name matches the one in the vector, if valid then it'll return that index
 GroceryItem& GroceryInventory::getEntry(const string& item){
         for(int i=0; i < _inventory.size(); i++)
         {
@@ -62,11 +63,12 @@ GroceryItem& GroceryInventory::getEntry(const string& item){
 
 
         }
+// If not input not found then error thrown
         throw range_error("Error item entry was not found");
 }
 
 void GroceryInventory::addEntry(const string& name, const int& quantity, const float& unitPrice, const bool& taxable){
-        //Since entry is a GroceryItem object it accepts the same parameters
+        //Since entry is a GroceryItem object it accepts the same parameters, so it can use the constructor already created
         GroceryItem entry(name, quantity, unitPrice, taxable);
         /*
            entry.setName(name);
@@ -77,16 +79,20 @@ void GroceryInventory::addEntry(const string& name, const int& quantity, const f
         //Adds the entry to the inventory vector
         _inventory.push_back(entry);
 }
+//returns the tax rate
 float GroceryInventory::getTaxRate() const {
         return _taxRate;
 }
+//sets the tax rate inputed from user to the function
 void GroceryInventory::setTaxRate(const float& taxRate){
         _taxRate = taxRate;
 
 }
 
 float GroceryInventory::calculateUnitRevenue() const {
-//unitprice * quantity
+//unitprice * quantity to calculate
+//goes through the _inventory vector and each time, the entry unitprice * quantity and adds that to the revenue
+//once the loop is finished the total revenue is returned 
 float revenue;
 for(int j = 0; j < _inventory.size(); j++)
 {
@@ -106,7 +112,7 @@ float GroceryInventory::calculateTaxRevenue() const {
   float revenue;
 for (int i = 0; i < _inventory.size(); i++) {
   float total;
-
+//if the entry found is taxable then the tax rate will be calculated and added to the revenue, and returned
   if(_inventory[i].isTaxable())
   {
     total = _inventory[i].getQuantity() * _inventory[i].getUnitPrice() * ( getTaxRate() * .01);
@@ -116,12 +122,12 @@ for (int i = 0; i < _inventory.size(); i++) {
 }
 return revenue;
 }
-
+//This function adds the Tax revenue and the unit revenue together and returns total revenue
 float GroceryInventory::calculateTotalRevenue() const {
 
   return calculateTaxRevenue() + calculateUnitRevenue();
 }
-
+//The operator allows for 'entryhead' to be recieved in the parameters and be returned in the _inventory vector
 GroceryItem& GroceryInventory::operator[](const int& entryhead) {
   return _inventory[entryhead];
 }
